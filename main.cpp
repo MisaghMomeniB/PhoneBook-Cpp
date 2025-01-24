@@ -21,3 +21,20 @@ void addContact() {
     contacts.push_back(contact);
     cout << "Contact added successfully!" << endl;
 }
+
+void addPhoneNumber() {
+        int id;
+    cout << "Enter contact ID: ";
+    cin >> id;
+    for (auto &contact : contacts) {
+        if (contact.id == id) {
+            string phoneNumber;
+            cout << "Enter phone number: ";
+            cin >> phoneNumber;
+            contact.phoneNumbers.push_back(phoneNumber);
+            cout << "Phone number added successfully!" << endl;
+            return;
+        }
+    }
+    cout << "Contact not found!" << endl;
+}
