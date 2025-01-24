@@ -54,3 +54,16 @@ void showContactsSorted() {
         cout << "ID: " << contact.id << ", Name: " << contact.name << endl;
     }
 }
+
+void searchContactByName() {
+    string name;
+    cout << "Enter name: ";
+    cin >> name;
+    for (const auto &contact : contacts) {
+        if (contact.name == name) {
+            cout << "ID: " << contact.id << ", Name: " << contact.name << endl;
+            return;
+        }
+    }
+    cout << "Contact not found!" << endl;
+}
