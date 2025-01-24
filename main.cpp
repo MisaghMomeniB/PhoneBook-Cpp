@@ -67,3 +67,19 @@ void searchContactByName() {
     }
     cout << "Contact not found!" << endl;
 }
+
+void viewContactDetails() {
+    int id;
+    cout << "Enter contact ID: ";
+    cin >> id;
+    for (const auto &contact : contacts) {
+        if (contact.id == id) {
+            cout << "ID: " << contact.id << ", Name: " << contact.name << endl;
+            for (const auto &phone : contact.phoneNumbers) {
+                cout << "Phone Number: " << phone << endl;
+            }
+            return;
+        }
+    }
+    cout << "Contact not found!" << endl;
+}
