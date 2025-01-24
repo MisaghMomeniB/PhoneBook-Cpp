@@ -9,3 +9,11 @@ struct Contact {
     string name;
     vector<string> phoneNumbers;
 };
+
+vector<Contact> contacts;
+int nextid = 1;
+
+void addContact() {
+    Contact contact;
+    contact.id nextid++;
+}
