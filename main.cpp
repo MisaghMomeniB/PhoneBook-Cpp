@@ -44,3 +44,13 @@ void showContacts() {
         cout << "ID: " << contact.id << ", Name: " << contact.name << endl;
     }
 }
+
+void showContactsSorted() {
+    vector<Contact> sortedContacts = contacts;
+    sort(sortedContacts.begin(), sortedContacts.end(), [](const Contact &a, const Contact &b) {
+        return a.name < b.name;
+    });
+    for (const auto &contact : sortedContacts) {
+        cout << "ID: " << contact.id << ", Name: " << contact.name << endl;
+    }
+}
