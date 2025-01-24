@@ -38,3 +38,9 @@ void addPhoneNumber() {
     }
     cout << "Contact not found!" << endl;
 }
+
+void showContacts() {
+    for (const auto &contact : contacts) {
+        cout << "ID: " << contact.id << ", Name: " << contact.name << endl;
+    }
+}
