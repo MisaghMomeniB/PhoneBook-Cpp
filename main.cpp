@@ -84,3 +84,47 @@ void viewContactDetails() {
     cout << "Contact not found!" << endl;
 }
 
+void deleteContact() {
+    int id;
+    cout << "Enter contact ID: ";
+    cin >> id;
+    for (auto it = contacts.begin(); it != contacts.end(); ++it) {
+        if (it->id == id) {
+            contacts.erase(it);
+            cout << "Contact deleted successfully!" << endl;
+            return;
+        }
+    }
+    cout << "Contact not found!" << endl;
+}
+
+int main() {
+    int choice;
+    do {
+        cout << "\nMenu:\n"
+             << "1. Add contact\n"
+             << "2. Add phone number\n"
+             << "3. Show contacts\n"
+             << "4. Show contacts sorted alphabetically\n"
+             << "5. Search contact by name\n"
+             << "6. View contact details by ID\n"
+             << "7. Delete contact by ID\n"
+             << "8. Exit\n"
+             << "Choice: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1: addContact(); break;
+            case 2: addPhoneNumber(); break;
+            case 3: showContacts(); break;
+            case 4: showContactsSorted(); break;
+            case 5: searchContactByName(); break;
+            case 6: viewContactDetails(); break;
+            case 7: deleteContact(); break;
+            case 8: cout << "Exiting the program!" << endl; break;
+            default: cout << "Invalid choice!" << endl; break;
+        }
+    } while (choice != 8);
+
+    return 0;
+}
