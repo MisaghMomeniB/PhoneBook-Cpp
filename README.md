@@ -1,3 +1,5 @@
+![github banner](https://github.com/user-attachments/assets/e6b58c53-e1c7-40cf-98cb-07eb1665727d)
+
 # 📇 Contact Management System
 
 A simple **Contact Management System** written in C++ that allows users to manage their contacts seamlessly. With features like adding contacts, searching by name, viewing details, and sorting, this program is perfect for organizing and managing your personal or professional contacts.
