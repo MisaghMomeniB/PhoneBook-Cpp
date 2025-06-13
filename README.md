@@ -1,183 +1,181 @@
-![github banner](https://github.com/user-attachments/assets/e6b58c53-e1c7-40cf-98cb-07eb1665727d)
+# 📇 PhoneBook (C++)
 
-# 📇 Contact Management System
-
-A simple **Contact Management System** written in C++ that allows users to manage their contacts seamlessly. With features like adding contacts, searching by name, viewing details, and sorting, this program is perfect for organizing and managing your personal or professional contacts.
-
-## 🚀 Features
-
-✨ **Add New Contacts**  
-Easily add new contacts with a unique ID and name.
-
-📞 **Add Phone Numbers**  
-Add multiple phone numbers to an existing contact.
-
-📜 **Show All Contacts**  
-View all saved contacts in the list.
-
-🔤 **Sort Contacts Alphabetically**  
-Display contacts sorted by name for easy browsing.
-
-🔍 **Search Contacts by Name**  
-Quickly find a contact by entering its name.
-
-🔎 **View Contact Details by ID**  
-View all details (including phone numbers) for a specific contact.
-
-🗑️ **Delete Contacts**  
-Remove a contact from the list using its unique ID.
+A simple yet powerful **console‑based phone book application** in modern C++ (C++11+), allowing you to store, search, edit, and delete contact details with ease.
 
 ---
 
-## 🛠️ How It Works
+## 📋 Table of Contents
 
-The program uses **C++ STL** (`vector`, `string`, and `algorithm`) to provide dynamic, flexible, and efficient contact management.
-
-### Code Overview
-
-1. **`struct Contact`**: Represents a contact with the following properties:  
-   - `id`: Unique identifier for the contact.  
-   - `name`: The name of the contact.  
-   - `phoneNumbers`: A dynamic list of phone numbers.
-
-2. **Global Variables**:  
-   - `contacts`: A `vector` to store all contacts.  
-   - `nextid`: An integer that auto-increments to assign unique IDs.
-
-3. **Functions**:  
-   - **`addContact()`**: Adds a new contact.  
-   - **`addPhoneNumber()`**: Appends a phone number to an existing contact.  
-   - **`showContacts()`**: Displays all contacts.  
-   - **`showContactsSorted()`**: Displays contacts alphabetically.  
-   - **`searchContactByName()`**: Finds a contact by name.  
-   - **`viewContactDetails()`**: Shows details of a contact by ID.  
-   - **`deleteContact()`**: Deletes a contact by ID.
-
-4. **Main Menu**:  
-   The program runs in a loop, displaying the following options:  
-   ```
-   Menu:
-   1. Add contact
-   2. Add phone number
-   3. Show contacts
-   4. Show contacts sorted alphabetically
-   5. Search contact by name
-   6. View contact details by ID
-   7. Delete contact by ID
-   8. Exit
-   ```
+1. [Overview](#overview)  
+2. [Features](#features)  
+3. [Tech Stack & Requirements](#tech-stack--requirements)  
+4. [Installation & Build](#installation--build)  
+5. [Usage Examples](#usage-examples)  
+6. [Code Structure](#code-structure)  
+7. [Persistence & File Format](#persistence--file-format)  
+8. [Extensibility & Tips](#extensibility--tips)  
+9. [Contributing](#contributing)  
+10. [License](#license)
 
 ---
 
-## 📋 Example Usage
+## 💡 Overview
 
-Here's what a typical session might look like:
+This application manages a simple phone book using a console menu interface. You can add, view, search, update, and delete contacts. It's a great foundation for learning file I/O, data structures, and modular C++ program design.
 
-```
-Menu:
-1. Add contact
-2. Add phone number
-3. Show contacts
-4. Show contacts sorted alphabetically
-5. Search contact by name
-6. View contact details by ID
-7. Delete contact by ID
-8. Exit
-Choice: 1
-Enter contact name: Alice
-Contact added successfully!
+---
 
-Choice: 2
-Enter contact ID: 1
-Enter phone number: 123-456-7890
-Phone number added successfully!
+## ✅ Features
 
-Choice: 3
-ID: 1, Name: Alice
+- ➕ **Add contacts** with name, phone number, email, and (optional) address  
+- 🔍 **Search contacts** by name or part of name  
+- 📝 **Edit contacts** to update any field  
+- ❌ **Delete contacts** safely with confirmation  
+- 📄 **List all contacts** in tabular format  
+- 💾 **Persistent storage** via a JSON or CSV‑like file (e.g., `contacts.db`)  
+- 🔁 **Console menu** for easy navigation
+
+---
+
+## 🛠️ Tech Stack & Requirements
+
+- **C++11+** (compatible with g++, clang++, or MSVC)  
+- Uses `<fstream>`, `<vector>`, `<string>`, `<regex>` from standard library  
+- No external dependencies or frameworks
+
+---
+
+## ⚙️ Installation & Build
+
+```bash
+git clone https://github.com/MisaghMomeniB/PhoneBook-Cpp.git
+cd PhoneBook-Cpp
+g++ -std=c++11 -o phonebook src/*.cpp
+````
+
+Or, using CMake:
+
+```bash
+mkdir build && cd build
+cmake ..
+make
 ```
 
----
+Runs on:
 
-## 🧰 Requirements
-
-- A C++ compiler (e.g., GCC or Clang)  
-- Basic understanding of compiling and running C++ programs.
+* **Linux/macOS**: `./phonebook`
+* **Windows**: `phonebook.exe`
 
 ---
 
-## 🔧 Installation
+## 🚀 Usage Examples
 
-1. **Clone the repository**:  
-   ```bash
-   git clone https://github.com/yourusername/contact-management-system.git
-   cd contact-management-system
-   ```
+On startup:
 
-2. **Compile the code**:  
-   ```bash
-   g++ contact_management.cpp -o contact_management
-   ```
+```
+=== PHONE BOOK ===
+1) Add Contact
+2) Search Contact
+3) Edit Contact
+4) Delete Contact
+5) List All Contacts
+6) Exit
+Select option: 
+```
 
-3. **Run the program**:  
-   ```bash
-   ./contact_management
-   ```
+### Add Contact:
+
+```
+Enter name: Alice Smith
+Enter phone number: +1-555-1234
+Enter email: alice@example.com
+Enter address (optional): 123 Maple St
+✅ Contact added with ID 3
+```
+
+### Search:
+
+```
+Search term: Alice
+Found:
+ID: 3 | Name: Alice Smith | Phone: +1-555-1234 | Email: alice@example.com
+```
+
+### Edit:
+
+```
+Enter ID: 3
+New name (current: Alice Smith): Alicia Smith
+...updates...
+✅ Contact updated.
+```
 
 ---
 
-## 🌟 Features in Detail
+## 📁 Code Structure
 
-### Adding Contacts  
-Easily add a new contact by entering the name. Each contact is automatically assigned a unique ID.
+```
+PhoneBook-Cpp/
+├── src/
+│   ├── main.cpp        # Entry point + menu logic
+│   ├── PhoneBook.cpp   # Core class implementation
+│   ├── Contact.cpp     # Contact entity class
+│   └── utils.cpp       # File I/O & validation helpers
+├── include/
+│   ├── PhoneBook.hpp
+│   ├── Contact.hpp
+│   └── utils.hpp
+└── README.md           # This file
+```
 
-### Adding Phone Numbers  
-Enhance contacts by associating multiple phone numbers with them.
-
-### Viewing All Contacts  
-Quickly view all contacts, either unsorted or sorted alphabetically.
-
-### Searching and Viewing Details  
-Use the search feature to find contacts by name or view full details using their ID.
-
-### Deleting Contacts  
-Remove outdated or incorrect contacts from the list permanently.
+* `Contact` holds data fields & validation
+* `PhoneBook` manages contact list and CRUD operations
+* `utils` handles file read/write (JSON/CSV) and input checks
 
 ---
 
-## 💡 Improvements and Ideas
+## 💾 Persistence & File Format
 
-Future features to consider:  
-- 📧 Adding email support for contacts.  
-- 📁 Saving contacts to a file for persistence.  
-- 🔒 Adding password protection for sensitive contact information.  
+Contacts are saved to `contacts.db` (structured in JSON or CSV format):
 
-Feel free to contribute or share your ideas via issues or pull requests! 🎉
+```json
+[
+  {
+    "id": 1,
+    "name": "Alice Smith",
+    "phone": "+1-555-1234",
+    "email": "alice@example.com",
+    "address": "123 Maple St"
+  },
+  ...
+]
+```
+
+Upon launch, it loads the file; changes are saved after operations.
+
+---
+
+## 🔧 Extensibility & Tips
+
+* 🗂️ Support multiple formats (XML, SQLite DB)
+* 🔒 Add grouping/tags (family, work, etc.)
+* 🕵️‍♂️ Add fuzzy search or phone/email validation via regex
+* 🌐 Add CSV import/export option
+* 📜 Architect GUI version later using Qt or ncurses
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome! To contribute:  
-1. Fork the repository.  
-2. Create a feature branch: `git checkout -b feature-name`.  
-3. Commit your changes: `git commit -m "Add feature"`.  
-4. Push to the branch: `git push origin feature-name`.  
-5. Open a pull request.
+Contributions welcome! To add features or improvements:
+
+1. Fork the repository
+2. Create a branch (`feature/...`)
+3. Document changes clearly
+4. Submit a Pull Request for review
 
 ---
 
-## 📝 License
+## 📄 License
 
-This project is open-source and available under the MIT License.
-
----
-
-## 🧑‍💻 Author
-
-- **Your Name**  
-  [GitHub Profile](https://github.com/MisaghMomeniB)
-  [LinkedIn Profile](https://www.linkedin.com/in/MisaghMomeniB/)
-
----
-
-Enjoy using the **Contact Management System**! 🚀
+Licensed under the **MIT License** — see `LICENSE` for details.
